@@ -1,165 +1,85 @@
-'use client';
-import * as React from 'react';
+"use client";
+import * as React from "react";
 
-import { ANIMATION_VARIANTS, AnimationT } from '@/components/systaliko-ui/utils/animation-variants';
 import {
   HTMLMotionProps,
   motion,
   MotionConfig,
-  Transition,
-  Variants,
-} from 'motion/react';
-import { TRANSITIONS } from '@/components/systaliko-ui/utils/transitions';
-import { cn } from '@/lib/utils';
-
-interface TextStaggerProps extends HTMLMotionProps<'span'> {
-  stagger?: number;
-  staggerDirection?: 1 | -1;
-  animation?: AnimationT;
-  characterTransition?: Transition;
-  as?: React.ElementType;
-}
-function useAnimationVariants(animation?: AnimationT) {
-  return ANIMATION_VARIANTS[animation || 'default'];
-}
-function useParseText(text: React.ReactNode) {
-  return React.useMemo(() => {
-    const stringText = String(text);
-    return {
-      words: stringText.split(' '),
-      characters: stringText.split(''),
-    };
-  }, [text]);
-}
+  stagger,
+  StaggerOrigin,
+} from "motion/react";
+import { ANIMATION_VARIANTS, AnimationT } from "../utils/animation-variants";
 
 interface WordProps extends React.HTMLAttributes<HTMLSpanElement> {
   animation?: AnimationT;
-  word: string;
-  wordIndex: number;
 }
 
-const Character = React.memo(({ char, variants }: {
-  char: string;
-  index: number;
-  variants?: Variants;
-}) => (
-  <motion.span
-    className="inline-block"
-    variants={variants}
-    style={{ display: 'inline-block' }} 
-  >
-    {char === ' ' ? '\u00A0' : char} 
-  </motion.span>
-));
-Character.displayName = 'Character';
-
-export const WordStagger = React.memo(({
-  word,
-  wordIndex,
-  animation,
-  className,
+export function WordStagger({
+  children,
+  animation = "default",
   ...props
-}: WordProps) => {
-  const characters = React.useMemo(() => word.split(''), [word]);
-  const animationVariants = useAnimationVariants(animation);
-  
+}: WordProps) {
+  const characters = String(children).split("");
+  const animationVariants = ANIMATION_VARIANTS[animation];
   return (
-    <span 
-      className={cn('inline-block text-nowrap', className)} 
-      data-word={word}
-      {...props}
-    >
+    <span className="inline-block text-nowrap" {...props}>
       {characters.map((char, index) => (
-        <Character
-          key={`${wordIndex}-${index}`} 
-          char={char}
-          index={index}
+        <motion.span
+          className="inline-block"
           variants={animationVariants}
-        />
+          key={`${char}-${index}`}
+        >
+          {char}
+        </motion.span>
       ))}
     </span>
   );
-});
-WordStagger.displayName = 'WordStagger';
+}
 
-const WordWrapper = React.memo(({ 
-  word, 
-  index, 
-  animation, 
-  characterTransition,
-  showSpace 
-}: {
-  word: string;
-  index: number;
+interface TextStaggerProps extends HTMLMotionProps<"span"> {
+  staggerValue?: number;
+  staggerStart?: StaggerOrigin;
   animation?: AnimationT;
-  characterTransition: Transition;
-  showSpace: boolean;
-}) => (
-  <>
-    <MotionConfig transition={characterTransition}>
-      <WordStagger 
-        word={word} 
-        wordIndex={index}
-        animation={animation}
-      />
-    </MotionConfig>
-    {showSpace && ' '}
-  </>
-));
-WordWrapper.displayName = 'WordWrapper';
+  as?: React.ElementType;
+}
 
-export const TextStaggerInview = React.memo(({
+export function TextStaggerInview({
   children,
   transition,
   className,
-  stagger = 0.02,
-  staggerDirection = 1,
+  viewport = { once: true, amount: 0.25 },
+  staggerValue = 0.02,
+  staggerStart = "first",
   animation,
-  characterTransition = TRANSITIONS,
-  as: Component = 'span',
+  as: Component = "span",
   ...props
-}: TextStaggerProps) => {
-  const { words } = useParseText(children as React.ReactNode);
-
-  const MotionComponent = React.useMemo(
-    () => motion.create(Component),
-    [Component]
-  );
-  
-  const containerTransition = React.useMemo(
-    () => ({
-      staggerChildren: stagger,
-      staggerDirection,
-      ...transition,
-    }),
-    [stagger, staggerDirection, transition]
-  );
-  
-  const viewportOptions = React.useMemo(
-    () => ({ once: true, amount: 0.1 }), 
-    []
-  );
-  
+}: TextStaggerProps) {
+  const words = String(children).split(" ");
+  const MotionComponent = motion.create(Component);
   return (
     <MotionComponent
       initial="hidden"
-      whileInView="visible"
-      viewport={viewportOptions}
+      whileInView={"visible"}
+      viewport={viewport}
       className={className}
-      transition={containerTransition}
+      transition={{
+        delayChildren: stagger(staggerValue, { from: staggerStart }),
+      }}
       {...props}
     >
-      {words.map((word, index) => (
-        <WordWrapper
-          key={`${index}-${word.slice(0, 3)}`} // Better key strategy
-          word={word}
-          index={index}
-          animation={animation}
-          characterTransition={characterTransition}
-          showSpace={index < words.length - 1}
-        />
-      ))}
+      <MotionConfig
+        transition={{
+          ease: transition?.ease || "easeOut",
+          ...transition,
+        }}
+      >
+        {words.map((word, index) => (
+          <React.Fragment key={`${word}-${index}`}>
+            <WordStagger animation={animation}>{word}</WordStagger>
+            {index < words.length - 1 && " "}
+          </React.Fragment>
+        ))}
+      </MotionConfig>
     </MotionComponent>
   );
-});
-TextStaggerInview.displayName = 'TextStaggerInview';
+}
