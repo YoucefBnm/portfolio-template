@@ -48,7 +48,10 @@ export function Experience() {
     restDelta: 0.001,
   });
   return (
-    <section ref={scrollRef} className="pb-12 px-8">
+    <section
+      ref={scrollRef}
+      className="bg-secondary text-secondary-foreground py-16 mt-12 px-8"
+    >
       <TextStaggerInview
         viewport={{ amount: "all", once: true }}
         as={"h2"}
@@ -71,7 +74,7 @@ export function Experience() {
           {EXPERIENCE_HISTORY.map((experience) => (
             <div key={experience.id} className="space-y-4">
               <div className="flex items-center gap-2">
-                <div className="p-px w-8 aspect-square bg-background self-start flex justify-center items-center relative z-[2]">
+                <div className="p-px w-8 aspect-square bg-secondary self-start flex justify-center items-center relative z-[2]">
                   <experience.icon className="size-4" />
                 </div>
                 <div className="flex gap-2 items-center flex-1 justify-between flex-wrap">

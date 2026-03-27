@@ -10,9 +10,9 @@ export default function Home() {
   return (
     <ReactLenis root>
       <Hero />
+      <About />
       <Services />
       <Work />
-      <About />
       <Experience />
       <Cta />
     </ReactLenis>

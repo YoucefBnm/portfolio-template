@@ -3,6 +3,7 @@ import {
   CardSticky,
 } from "@/components/systaliko-ui/cards/cards-stack";
 import { TextStaggerInview } from "@/components/systaliko-ui/text/text-stagger-inview";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
 const PROJECTS = [
@@ -45,45 +46,47 @@ export function Work() {
         {PROJECTS.map((project, index) => (
           <CardSticky
             transition={{ ease: "easeInOut" }}
-            className="w-full lg:w-max bg-card border-t border-t-border mx-auto shadow"
+            className="w-full lg:w-max bg-secondary border border-border/50 mx-auto shadow rounded-4xl"
             key={project.id}
             index={index}
             incrementY={49}
-            incrementZ={0}
+            incrementZ={15}
           >
-            <div className="flex flex-wrap justify-between items-center gap-4  h-12 px-4">
-              <div>
-                <h3 className="text-xl font-bold uppercase tracking-tight">
+            <div className="flex flex-wrap justify-between gap-4  px-8 py-6">
+              <div className="space-y-3">
+                <div className="hidden md:flex-1 md:flex justify-center gap-2">
+                  {project.services.map((service) => (
+                    <Badge
+                      key={`${project.id}-${service}`}
+                      className="rounded-full"
+                      variant="outline"
+                    >
+                      {service}
+                    </Badge>
+                  ))}
+                </div>
+                <h3 className="text-xl font-bold tracking-tight">
                   {project.title}
                 </h3>
               </div>
 
-              <div className="hidden md:flex-1 md:flex justify-center gap-2">
-                {project.services.map((service) => (
-                  <span
-                    key={`${project.id}-${service}`}
-                    className="text-sm font-medium uppercase tracking-tight text-muted-foreground"
-                  >
-                    {service}
-                  </span>
-                ))}
-              </div>
-
-              <Button size={"sm"} variant={"outline"} className="uppercase">
+              <Button size={"sm"}>
                 <a href={project.link} target="_blank" className="block">
-                  view case
+                  View case
                 </a>
               </Button>
             </div>
-            <div className="w-full place-items-center">
-              <video
-                autoPlay
-                muted
-                loop
-                src={project.videoUrl}
-                poster={project.imageUrl}
-                className="h-auto max-h-[80vh] w-auto max-w-full"
-              />
+            <div className="w-full place-items-center p-4">
+              <div className="overflow-hidden rounded-2xl">
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  src={project.videoUrl}
+                  poster={project.imageUrl}
+                  className="max-h-[80vh] w-auto max-w-full"
+                />
+              </div>
             </div>
           </CardSticky>
         ))}

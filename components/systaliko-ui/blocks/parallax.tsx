@@ -1,33 +1,33 @@
-'use client';
-import * as React from 'react';
+"use client";
+import * as React from "react";
 
-import { cn } from '@/lib/utils';
+import { cn } from "@/lib/utils";
 import {
   motion,
   HTMLMotionProps,
   useMotionTemplate,
   useScroll,
   useTransform,
-} from 'motion/react';
+} from "motion/react";
 
-interface ParallaxItemProps extends HTMLMotionProps<'div'> {
+interface ParallaxItemProps extends HTMLMotionProps<"div"> {
   start: number;
   end: number;
-  scaleRange?: unknown[]
+  scaleRange?: unknown[];
 }
 
-export function Parallax({ className, ...props }: React.ComponentProps<'div'>) {
+export function Parallax({ className, ...props }: React.ComponentProps<"div">) {
   return (
-    <div className={cn('relative min-h-dvh w-full', className)} {...props} />
+    <div className={cn("relative min-h-dvh w-full", className)} {...props} />
   );
 }
 
 export function PrallaxContainer({
   className,
   ...props
-}: React.ComponentProps<'div'>) {
+}: React.ComponentProps<"div">) {
   return (
-    <div className={cn('px-default min-h-screen', className)} {...props} />
+    <div className={cn("px-default min-h-screen", className)} {...props} />
   );
 }
 export function ParallaxItem({

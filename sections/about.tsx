@@ -12,23 +12,14 @@ export function About() {
         <TextStaggerInview
           staggerValue={0.005}
           animation="left"
-          className={`
-                        text-2xl items-center font-bold uppercase 
-                        [&>[data-word=Designer]]:inline-flex [&>[data-word=Designer]]:items-center [&>[data-word=Designer]]:after:inline-block [&>[data-word=Designer]]:after:size-8
-                        [&>[data-word=Designer]]:after:bg-[url('https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] 
-                        [&>[data-word=Designer]]:after:bg-cover [&>[data-word=Designer]]:after:bg-center [&>[data-word=Designer]]:after:rounded-full [&>[data-word=Designer]]:after:ml-2    
-
-                        [&>[data-word=experience]]:inline-flex [&>[data-word=experience]]:items-center [&>[data-word=experience]]:after:inline-block [&>[data-word=experience]]:after:size-8
-                        [&>[data-word=experience]]:after:bg-[url('https://images.unsplash.com/photo-1609921212029-bb5a28e60960?q=80&w=1452&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] 
-                        [&>[data-word=experience]]:after:bg-cover [&>[data-word=experience]]:after:bg-center [&>[data-word=experience]]:after:rounded-full [&>[data-word=experience]]:after:ml-2    
-
-                    `}
+          className="text-2xl items-center font-semibold text-balance"
           as="h3"
         >
-          they call me d&d that’s not my rap name one D for developer and other
+          They call me d&d that’s not my rap name one D for developer and other
           for designer, and in the dark nights when you miss the moon I&apos;m
           be available, no matter what you wanna create I&apos;ll create it, you
-          have an old radio and you wanna listen to alvis I’ll make it happen.{" "}
+          have an old radio and you wanna listen to alvis I’ll make it
+          happen.{" "}
         </TextStaggerInview>
 
         <motion.div
@@ -38,7 +29,7 @@ export function About() {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <Button className="font-bold">
+          <Button>
             Fix your radio <ArrowRightIcon />
           </Button>
         </motion.div>
