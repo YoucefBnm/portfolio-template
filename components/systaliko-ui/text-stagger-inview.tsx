@@ -46,7 +46,7 @@ export function TextStaggerInview({
   children,
   transition,
   className,
-  viewport = { once: true, amount: 0.25 },
+  viewport = { amount: "all", once: true },
   staggerValue = 0.02,
   staggerStart = "first",
   animation,

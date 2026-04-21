@@ -1,3 +1,7 @@
+import AmazonIcon from "@/components/icons/amazon-icon";
+import AppleIcon from "@/components/icons/apple-icon";
+import GoogleIcon from "@/components/icons/google-icon";
+
 export const NAV_LINKS = [
   {
     label: "Home",
@@ -58,5 +62,43 @@ export const PROJECTS: Project[] = [
       "+18% increase in qualified leads",
     ],
     imageUrl: "/work-cognify.png",
+  },
+];
+
+export interface ExperienceT {
+  id: string;
+  company: string;
+  title: string;
+  description: string;
+  icon: React.FC<React.SVGProps<SVGSVGElement>>;
+  periode: string;
+}
+export const EXPERIENCE_HISTORY: ExperienceT[] = [
+  {
+    id: "experience-history-amazon",
+    company: "Amazon",
+    title: "Senior Software Engineer",
+    description:
+      "my main role was to lead the development of the Amazon Echo smart speaker, which was a massive project that required a team of over 100 engineers. I was responsible for the design, development, and testing of the Echo's voice assistant, as well as the integration of Amazon's Alexa and Google Assistant services.",
+    icon: AmazonIcon,
+    periode: "2019 - 2022",
+  },
+  {
+    id: "experience-history-google",
+    company: "Google",
+    title: "Staff Software Engineer",
+    description:
+      "my main role was to lead the development of the Google Assistant smart speaker, which was a massive project that required a team of over 100 engineers. I was responsible for the design, development, and testing of the Echo's voice assistant, as well as the integration of Amazon's Alexa and Google Assistant services.",
+    icon: GoogleIcon,
+    periode: "2022 - 2023",
+  },
+  {
+    id: "experience-history-apple",
+    company: "Apple",
+    title: "Principal Software Engineer",
+    description:
+      "if you offer less money and upper position I’m yours, I thought siri how to spell, which was a massive project that required a team of over 100 engineers. I was responsible for the design, development, and testing of the Echo's voice assistant, as well as the integration of Amazon's Alexa and Google Assistant services, left after the glass design update.",
+    icon: AppleIcon,
+    periode: "2023 - 2025",
   },
 ];

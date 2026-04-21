@@ -3,7 +3,6 @@ import {
   CardsStackContainer,
   CardSticky,
 } from "@/components/systaliko-ui/cards-stack";
-import { TextStaggerInview } from "@/components/systaliko-ui/text-stagger-inview";
 import { Badge } from "@/components/ui/badge";
 import { Project, PROJECTS } from "@/data/constants";
 import Image from "next/image";
@@ -13,6 +12,25 @@ import {
   useCustomCursor,
 } from "../systaliko-ui/custom-cursor";
 import { motion } from "motion/react";
+import { SectionTitle } from "../section-title";
+
+function CustomCursorChildren({ children }: { children: React.ReactNode }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, filter: "blur(10px)", scale: 0.8 }}
+      animate={{
+        opacity: 1,
+        filter: "blur(0px)",
+        scale: 1,
+      }}
+      exit={{ opacity: 0, filter: "blur(10px)", scale: 0.8 }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
+      className="w-min text-center p-2 aspect-square text-sm font-medium bg-primary text-primary-foreground rounded-full "
+    >
+      {children}
+    </motion.div>
+  );
+}
 
 function ProjectCard(project: Project) {
   const { setCursorChildren, containerRef } = useCustomCursor();
@@ -30,32 +48,19 @@ function ProjectCard(project: Project) {
         className="flex gap-8 flex-wrap"
         onMouseEnter={() =>
           setCursorChildren(
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, filter: "blur(10px)", scale: 0.8 }}
-              animate={{
-                opacity: 1,
-                filter: "blur(0px)",
-                scale: 1,
-              }}
-              exit={{ opacity: 0, filter: "blur(10px)", scale: 0.8 }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
-              className="w-min text-center p-2 aspect-square text-sm font-medium bg-primary text-primary-foreground rounded-full "
-            >
+            <CustomCursorChildren>
               <span>view project</span>
-            </motion.div>,
+            </CustomCursorChildren>,
           )
         }
         onMouseLeave={handleClearCursor}
       >
         <div className="md:flex-1 flex flex-col justify-evenly gap-4 p-6">
           <div className="space-y-6">
-            <span className="text-xs font-medium text-muted-foreground">
+            <p className="text-xs font-medium text-muted-foreground">
               {project.year}
-            </span>
-            <span className="text-xs font-medium text-muted-foreground">
-              {project.client}
-            </span>
+            </p>
+            <p className="text-xs font-medium text-primary">{project.client}</p>
 
             <h3 className="text-2xl font-medium text-balance">
               {project.title}
@@ -91,15 +96,7 @@ function ProjectCard(project: Project) {
 export function Work() {
   return (
     <section className="pb-16 space-y-8">
-      <div className="px-8 py-5 border-y ">
-        <TextStaggerInview
-          animation="left"
-          staggerStart={"center"}
-          className="uppercase text-sm text-muted-foreground"
-        >
-          Selected work
-        </TextStaggerInview>
-      </div>
+      <SectionTitle>Selected work</SectionTitle>
 
       <CardsStackContainer className="px-8 flex flex-col gap-16">
         {PROJECTS.map((project) => (

@@ -12,6 +12,7 @@ export default function Home() {
     <ReactLenis root>
       <Hero />
       <Work />
+      <Experience />
     </ReactLenis>
   );
 }

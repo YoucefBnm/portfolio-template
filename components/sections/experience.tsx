@@ -1,102 +1,48 @@
-"use client";
-import * as React from "react";
-import AmazonIcon from "@/components/icons/amazon-icon";
-import AppleIcon from "@/components/icons/apple-icon";
-import GoogleIcon from "@/components/icons/google-icon";
-import { motion, useScroll, useSpring } from "motion/react";
-import { TextStaggerInview } from "@/components/systaliko-ui/text-stagger-inview";
+import { SectionTitle } from "../section-title";
+import { EXPERIENCE_HISTORY, ExperienceT } from "@/data/constants";
+import {
+  Timeline,
+  TimelineCard,
+  TimelineProgress,
+} from "../systaliko-ui/timeline";
 
-const EXPERIENCE_HISTORY = [
-  {
-    id: "experience-history-amazon",
-    company: "Amazon",
-    title: "Senior Software Engineer",
-    description:
-      "my main role was to lead the development of the Amazon Echo smart speaker, which was a massive project that required a team of over 100 engineers. I was responsible for the design, development, and testing of the Echo's voice assistant, as well as the integration of Amazon's Alexa and Google Assistant services.",
-    icon: AmazonIcon,
-    periode: "2019 - 2022",
-  },
-  {
-    id: "experience-history-google",
-    company: "Google",
-    title: "Staff Software Engineer",
-    description:
-      "my main role was to lead the development of the Google Assistant smart speaker, which was a massive project that required a team of over 100 engineers. I was responsible for the design, development, and testing of the Echo's voice assistant, as well as the integration of Amazon's Alexa and Google Assistant services.",
-    icon: GoogleIcon,
-    periode: "2022 - 2023",
-  },
-  {
-    id: "experience-history-apple",
-    company: "Apple",
-    title: "Principal Software Engineer",
-    description:
-      "if you offer less money and upper position I’m yours, I thought siri how to spell, which was a massive project that required a team of over 100 engineers. I was responsible for the design, development, and testing of the Echo's voice assistant, as well as the integration of Amazon's Alexa and Google Assistant services, left after the glass design update.",
-    icon: AppleIcon,
-    periode: "2023 - 2025",
-  },
-];
+export function ExperienceCard({ experience }: { experience: ExperienceT }) {
+  return (
+    <div className="bg-card text-card-foreground border p-6 space-y-6">
+      <div className="flex gap-2 items-center justify-between flex-wrap">
+        <h3 className="font-medium text-balance">{experience.title}</h3>
+        <p className="text-xs font-medium text-primary uppercase">
+          {experience.company}
+        </p>
+        <p className="text-muted-foreground">{experience.periode}</p>
+      </div>
+
+      <p className="text-muted-foreground text-sm text-balance">
+        {experience.description}
+      </p>
+    </div>
+  );
+}
 
 export function Experience() {
-  const scrollRef = React.useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: scrollRef,
-    offset: ["start center", "end end"],
-  });
-  const scaleY = useSpring(scrollYProgress, {
-    damping: 50,
-    stiffness: 300,
-    restDelta: 0.001,
-  });
   return (
-    <section
-      ref={scrollRef}
-      className="bg-secondary text-secondary-foreground py-16 mt-12 px-8"
-    >
-      <TextStaggerInview
-        viewport={{ amount: "all", once: true }}
-        as={"h2"}
-        animation="left"
-        className="text-4xl place-self-center mb-8 font-bold tracking-tight uppercase"
-      >
-        experience history
-      </TextStaggerInview>
-      <div className="md:h-4/5 lg:w-3/5 grid grid-cols-[32px_1fr] mx-auto">
-        <div className="row-start-1 col-start-1 w-8 flex justify-center">
-          <div className="h-full w-0.5 bg-muted">
-            <motion.div
-              className="origin-top size-full bg-foreground"
-              style={{ scaleY }}
-            />
-          </div>
-        </div>
+    <section className="overflow-hidden pb-16 space-y-8">
+      <SectionTitle>Experience history</SectionTitle>
 
-        <div className="row-start-1 col-start-1 col-span-2 space-y-16">
+      <Timeline className="flex justify-center gap-8 md:block relative max-w-5xl mx-auto px-6">
+        <TimelineProgress className="md:absolute top-0 md:left-1/2 md:-translate-x-1/2 bottom-0" />
+
+        <div className="space-y-20">
           {EXPERIENCE_HISTORY.map((experience) => (
-            <div key={experience.id} className="space-y-4">
-              <div className="flex items-center gap-2">
-                <div className="p-px w-8 aspect-square bg-secondary self-start flex justify-center items-center relative z-[2]">
-                  <experience.icon className="size-4" />
-                </div>
-                <div className="flex gap-2 items-center flex-1 justify-between flex-wrap">
-                  <h3 className="text-xl font-bold uppercase">
-                    {experience.title}
-                  </h3>
-                  <p className="uppercase font-medium">{experience.company}</p>
-                  <p className="text-muted-foreground ml-auto">
-                    {experience.periode}
-                  </p>
-                </div>
-              </div>
-
-              <div className="ml-10">
-                <p className="text-muted-foreground">
-                  {experience.description}
-                </p>
-              </div>
-            </div>
+            <TimelineCard
+              key={experience.id}
+              className="grid md:even:*:col-start-2 md:grid-cols-2 gap-16"
+            >
+              <ExperienceCard experience={experience} />
+            </TimelineCard>
           ))}
         </div>
-      </div>
+      </Timeline>
     </section>
   );
 }
