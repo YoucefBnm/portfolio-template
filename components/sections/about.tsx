@@ -1,4 +1,4 @@
-import { TextStaggerInview } from "@/components/systaliko-ui/text/text-stagger-inview";
+import { TextStaggerInview } from "@/components/systaliko-ui/text-stagger-inview";
 import { ANIMATION_VARIANTS } from "@/components/systaliko-ui/utils/animation-variants";
 import { Button } from "@/components/ui/button";
 import { ArrowRightIcon } from "lucide-react";

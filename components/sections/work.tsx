@@ -1,93 +1,112 @@
+"use client";
 import {
   CardsStackContainer,
   CardSticky,
-} from "@/components/systaliko-ui/cards/cards-stack";
-import { TextStaggerInview } from "@/components/systaliko-ui/text/text-stagger-inview";
+} from "@/components/systaliko-ui/cards-stack";
+import { TextStaggerInview } from "@/components/systaliko-ui/text-stagger-inview";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Project, PROJECTS } from "@/data/constants";
+import Image from "next/image";
+import {
+  CustomCursor,
+  CustomCursorProvider,
+  useCustomCursor,
+} from "../systaliko-ui/custom-cursor";
+import { motion } from "motion/react";
 
-const PROJECTS = [
-  {
-    id: "project-veo",
-    title: "Veo Agency",
-    services: ["Branding", "Marketing strategy", "UI/UX Design", "Development"],
-    description:
-      "The Veo website is a modern and user-friendly platform for creating and managing your online business. It offers a range of features and tools to help you streamline your operations and enhance your customer experience.",
-    imageUrl: "https://systaliko-ui.vercel.app/videos/veo-preview.png",
-    videoUrl: "https://systaliko-ui.vercel.app/videos/veo-preview.mp4",
-    link: "https://veo-agency-template.vercel.app/",
-  },
-  {
-    id: "project-abla",
-    title: "Abla Studio",
-    services: ["Branding", "SEO", "UI/UX Design", "Development"],
-    description:
-      "Abla Studio is a modern and user-friendly platform for creating and managing your online business. It offers a range of features and tools to help you streamline your operations and enhance your customer experience.",
-    imageUrl: "https://systaliko-ui.vercel.app/videos/abla-preview.png",
-    videoUrl: "https://systaliko-ui.vercel.app/videos/abla-preview.mp4",
-    link: "https://abla-studio-template.vercel.app/",
-  },
-];
+function ProjectCard(project: Project) {
+  const { setCursorChildren, containerRef } = useCustomCursor();
+  const handleClearCursor = () => {
+    setCursorChildren(null);
+  };
+
+  return (
+    <div
+      ref={containerRef}
+      className="relative max-w-5xl mx-auto  bg-card text-card-foreground border"
+    >
+      <CustomCursor />
+      <div
+        className="flex gap-8 flex-wrap"
+        onMouseEnter={() =>
+          setCursorChildren(
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, filter: "blur(10px)", scale: 0.8 }}
+              animate={{
+                opacity: 1,
+                filter: "blur(0px)",
+                scale: 1,
+              }}
+              exit={{ opacity: 0, filter: "blur(10px)", scale: 0.8 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="w-min text-center p-2 aspect-square text-sm font-medium bg-primary text-primary-foreground rounded-full "
+            >
+              <span>view project</span>
+            </motion.div>,
+          )
+        }
+        onMouseLeave={handleClearCursor}
+      >
+        <div className="md:flex-1 flex flex-col justify-evenly gap-4 p-6">
+          <div className="space-y-6">
+            <span className="text-xs font-medium text-muted-foreground">
+              {project.year}
+            </span>
+            <span className="text-xs font-medium text-muted-foreground">
+              {project.client}
+            </span>
+
+            <h3 className="text-2xl font-medium text-balance">
+              {project.title}
+            </h3>
+
+            <div className="flex gap-2">
+              {project.services.map((service) => (
+                <Badge key={service} variant="outline" className="rounded-full">
+                  {service}
+                </Badge>
+              ))}
+            </div>
+          </div>
+
+          <p className="text-sm text-balance">{project.solution}</p>
+        </div>
+
+        <Image
+          className="flex-1 object-cover"
+          src={project.imageUrl}
+          alt={project.client}
+          width={657}
+          height={552}
+          quality={75}
+          sizes="(max-width: 768px) 100vw, 657px"
+          priority
+        />
+      </div>
+    </div>
+  );
+}
 
 export function Work() {
   return (
-    <section className="pt-12">
-      <div className="px-6 mb-8 text-center">
+    <section className="pb-16 space-y-8">
+      <div className="px-8 py-5 border-y ">
         <TextStaggerInview
-          viewport={{ amount: "all", once: true }}
-          as={"h2"}
           animation="left"
-          className="text-4xl font-bold tracking-tight uppercase"
+          staggerStart={"center"}
+          className="uppercase text-sm text-muted-foreground"
         >
-          my crafted projects
+          Selected work
         </TextStaggerInview>
       </div>
-      <CardsStackContainer className="px-6 min-h-[220vh] space-y-8 ">
-        {PROJECTS.map((project, index) => (
-          <CardSticky
-            transition={{ ease: "easeInOut" }}
-            className="w-full lg:w-max bg-secondary border border-border/50 mx-auto shadow rounded-4xl"
-            key={project.id}
-            index={index}
-            incrementY={49}
-            incrementZ={15}
-          >
-            <div className="flex flex-wrap justify-between gap-4  px-8 py-6">
-              <div className="space-y-3">
-                <div className="hidden md:flex-1 md:flex justify-center gap-2">
-                  {project.services.map((service) => (
-                    <Badge
-                      key={`${project.id}-${service}`}
-                      className="rounded-full"
-                      variant="outline"
-                    >
-                      {service}
-                    </Badge>
-                  ))}
-                </div>
-                <h3 className="text-xl font-bold tracking-tight">
-                  {project.title}
-                </h3>
-              </div>
 
-              <Button size={"sm"}>
-                <a href={project.link} target="_blank" className="block">
-                  View case
-                </a>
-              </Button>
-            </div>
-            <div className="w-full place-items-center p-4">
-              <div className="overflow-hidden rounded-2xl">
-                <video
-                  autoPlay
-                  muted
-                  loop
-                  src={project.videoUrl}
-                  poster={project.imageUrl}
-                  className="max-h-[80vh] w-auto max-w-full"
-                />
-              </div>
-            </div>
+      <CardsStackContainer className="px-8 flex flex-col gap-16">
+        {PROJECTS.map((project) => (
+          <CardSticky key={project.id}>
+            <CustomCursorProvider>
+              <ProjectCard {...project} />
+            </CustomCursorProvider>
           </CardSticky>
         ))}
       </CardsStackContainer>

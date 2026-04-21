@@ -11,6 +11,7 @@ export default function Home() {
   return (
     <ReactLenis root>
       <Hero />
+      <Work />
     </ReactLenis>
   );
 }

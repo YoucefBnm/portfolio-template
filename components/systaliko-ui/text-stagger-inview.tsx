@@ -8,7 +8,7 @@ import {
   stagger,
   StaggerOrigin,
 } from "motion/react";
-import { ANIMATION_VARIANTS, AnimationT } from "../utils/animation-variants";
+import { ANIMATION_VARIANTS, AnimationT } from "./utils/animation-variants";
 
 interface WordProps extends React.HTMLAttributes<HTMLSpanElement> {
   animation?: AnimationT;

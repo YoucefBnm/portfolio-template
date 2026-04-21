@@ -4,7 +4,7 @@ import AmazonIcon from "@/components/icons/amazon-icon";
 import AppleIcon from "@/components/icons/apple-icon";
 import GoogleIcon from "@/components/icons/google-icon";
 import { motion, useScroll, useSpring } from "motion/react";
-import { TextStaggerInview } from "@/components/systaliko-ui/text/text-stagger-inview";
+import { TextStaggerInview } from "@/components/systaliko-ui/text-stagger-inview";
 
 const EXPERIENCE_HISTORY = [
   {

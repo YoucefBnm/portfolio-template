@@ -1,13 +1,13 @@
 "use client";
-import { ContainerStagger } from "@/components/systaliko-ui/blocks/container-stagger";
 import { motion, MotionConfig } from "motion/react";
 import { ANIMATION_VARIANTS } from "@/components/systaliko-ui/utils/animation-variants";
-import { TextStaggerInview } from "@/components/systaliko-ui/text/text-stagger-inview";
+import { TextStaggerInview } from "@/components/systaliko-ui/text-stagger-inview";
 import GithubIcon from "@/components/icons/github-icon";
 import LinkedinIcon from "@/components/icons/linkedin-icon";
 import { Badge } from "../ui/badge";
 import { Pulse } from "../pulse";
 import { ClockIcon, MapPinIcon } from "lucide-react";
+import { ContainerStagger } from "../systaliko-ui/container-stagger";
 
 const opacityAnimation = ANIMATION_VARIANTS["default"];
 function HeroText() {
@@ -73,7 +73,7 @@ function HeroBadges() {
 }
 export function Hero() {
   return (
-    <section className="relative py-16 px-8">
+    <section className="min-h-[90vh] place-content-center relative py-16 px-8">
       <ContainerStagger className="grid lg:grid-cols-2  space-y-4">
         <MotionConfig transition={{ duration: 0.5 }}>
           <HeroText />
