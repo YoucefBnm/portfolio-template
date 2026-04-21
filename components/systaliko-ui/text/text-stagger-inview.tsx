@@ -40,7 +40,6 @@ interface TextStaggerProps extends HTMLMotionProps<"span"> {
   staggerValue?: number;
   staggerStart?: StaggerOrigin;
   animation?: AnimationT;
-  as?: React.ElementType;
 }
 
 export function TextStaggerInview({
@@ -51,13 +50,11 @@ export function TextStaggerInview({
   staggerValue = 0.02,
   staggerStart = "first",
   animation,
-  as: Component = "span",
   ...props
 }: TextStaggerProps) {
   const words = String(children).split(" ");
-  const MotionComponent = motion.create(Component);
   return (
-    <MotionComponent
+    <motion.span
       initial="hidden"
       whileInView={"visible"}
       viewport={viewport}
@@ -80,6 +77,6 @@ export function TextStaggerInview({
           </React.Fragment>
         ))}
       </MotionConfig>
-    </MotionComponent>
+    </motion.span>
   );
 }
