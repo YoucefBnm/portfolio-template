@@ -1,6 +1,7 @@
 import AmazonIcon from "@/components/icons/amazon-icon";
 import AppleIcon from "@/components/icons/apple-icon";
 import GoogleIcon from "@/components/icons/google-icon";
+import { ExperienceT, ProjectT, ServiceT } from "@/types";
 
 export const NAV_LINKS = [
   {
@@ -20,17 +21,8 @@ export const NAV_LINKS = [
     href: "/",
   },
 ];
-export interface Project {
-  id: string;
-  year: number;
-  client: string;
-  title: string;
-  services: string[];
-  solution: string;
-  impact: string[];
-  imageUrl: string;
-}
-export const PROJECTS: Project[] = [
+
+export const PROJECTS: ProjectT[] = [
   {
     id: "project-abla",
     year: 2024,
@@ -65,14 +57,6 @@ export const PROJECTS: Project[] = [
   },
 ];
 
-export interface ExperienceT {
-  id: string;
-  company: string;
-  title: string;
-  description: string;
-  icon: React.FC<React.SVGProps<SVGSVGElement>>;
-  periode: string;
-}
 export const EXPERIENCE_HISTORY: ExperienceT[] = [
   {
     id: "experience-history-amazon",
@@ -100,5 +84,50 @@ export const EXPERIENCE_HISTORY: ExperienceT[] = [
       "if you offer less money and upper position I’m yours, I thought siri how to spell, which was a massive project that required a team of over 100 engineers. I was responsible for the design, development, and testing of the Echo's voice assistant, as well as the integration of Amazon's Alexa and Google Assistant services, left after the glass design update.",
     icon: AppleIcon,
     periode: "2023 - 2025",
+  },
+];
+
+export const SERVICES: ServiceT[] = [
+  {
+    focus: ["ux audits", "wireframes", "UI systems"],
+    label: "Ecommerce UX/UI design",
+    solution:
+      "Conversion focused product pages, category pages, and checkout flows optimized for usability and trust.",
+    serviceImage: "/template-stridath.png",
+  },
+  {
+    focus: ["heatmaps", "analytics", "hypothesis"],
+    label: "Conversion rate optimization",
+    solution:
+      "A/B testing, funnel analysis, and continuous iteration to increase conversion rate, AOV and revenue per visitor.",
+    serviceImage: "/template-visiocraft.png",
+  },
+  {
+    focus: ["performance", "scalability", "API integration"],
+    label: "Shopify & headless development",
+    solution:
+      "Custom storefronts using shopify, shopify pluse, or headless architecture with modern frameworks.",
+    serviceImage: "/template-breinkenhier.png",
+  },
+  {
+    focus: ["faster pages", "higher conversions"],
+    label: "Performance optimization",
+    solution:
+      "Improve core web vitals, reduce load times, and enhance user experience across devices.",
+    serviceImage: "/template-gt.png",
+  },
+  {
+    focus: ["payment gateways", "checkout flows"],
+    label: "Payment gateway integration",
+    solution:
+      "Accept payments using popular payment gateways like Stripe, PayPal, and Braintree.",
+    serviceImage: "/template-enera.png",
+  },
+  {
+    focus: ["increase LTV", "repeat purchases"],
+    label: "Retention & lifecycle design",
+    solution:
+      "Email flows, loyalty UX, subscriptions, and post purchase follow ups.",
+    serviceImage: "/template-motus.png",
   },
 ];

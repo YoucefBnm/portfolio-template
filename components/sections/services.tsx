@@ -1,102 +1,51 @@
-"use client";
-import {
-  Parallax,
-  ParallaxItem,
-  PrallaxContainer,
-} from "@/components/systaliko-ui/blocks/parallax";
+import { ServiceT } from "@/types";
+import { SectionTitle } from "../section-title";
+import { Badge } from "../ui/badge";
+import { SERVICES } from "@/data";
 import Image from "next/image";
+
+function ServiceRow({ service }: { service: ServiceT }) {
+  return (
+    <div className="group cursor-pointer relative border-b hover:bg-popover hover:text-popover-foreground duration-200 ease-out transition-colors flex justify-between px-6 py-2.5 flex-wrap gap-4">
+      <div className="flex-1 space-y-2 flex flex-col">
+        {service.focus.map((focus) => (
+          <Badge variant={"outline"} className="rounded-full" key={focus}>
+            {focus}
+          </Badge>
+        ))}
+      </div>
+      <div className="pointer-events-none absolute top-1/2 -translate-y-1/2 left-1/4 w-60 h-fit overflow-hidden transition-[clip-path] duration-500 ease-out [clip-path:polygon(50%_50%,50%_50%,50%_50%,50%_50%)] group-hover:[clip-path:polygon(0_0,100%_0,100%_100%,0%_100%)]">
+        <Image
+          className="flex-1 object-cover"
+          src={service.serviceImage}
+          alt={service.label}
+          width={462}
+          height={294}
+          quality={75}
+          sizes="(max-width: 768px) 50vw, 462px"
+          priority
+        />
+      </div>
+      <div className="flex-1 space-y-4">
+        <h3 className="text-xl font-medium">{service.label}</h3>
+        <p className="text-muted-foreground text-sm text-balance">
+          {service.solution}
+        </p>
+      </div>
+    </div>
+  );
+}
 
 export function Services() {
   return (
-    <section>
-      <Parallax className="min-h-[100rem] py-8 bg-foreground text-background px-6">
-        <div className="sticky z-10 mix-blend-difference top-0 h-screen space-y-4 w-full flex flex-col justify-center items-center text-center">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold uppercase tracking-tight ">
-            Design Engineer
-          </h1>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold uppercase tracking-tight text-muted-foreground">
-            Product Designer
-          </h1>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold uppercase tracking-tight ">
-            UX Designer
-          </h1>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold uppercase tracking-tight ">
-            Frontend Engineer
-          </h1>
-        </div>
+    <section className="pb-16 space-y-8">
+      <SectionTitle>Offered services</SectionTitle>
 
-        <PrallaxContainer className="flex flex-wrap justify-evenly gap-4 w-full">
-          <ParallaxItem
-            className="relative basis-1/3 max-h-[80vh]"
-            start={0}
-            end={-200}
-          >
-            <Image
-              fill
-              className="object-contain"
-              sizes="(max-width: 768px) 100vw, 200px"
-              src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="showcase"
-            />
-          </ParallaxItem>
-
-          <ParallaxItem
-            className="relative basis-1/3 max-h-[80vh]"
-            start={300}
-            end={-100}
-          >
-            <Image
-              fill
-              sizes="(max-width: 768px) 100vw, 200px"
-              className="object-contain"
-              src="https://images.unsplash.com/photo-1536148935331-408321065b18?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="showcase"
-            />
-          </ParallaxItem>
-
-          <ParallaxItem
-            className="relative basis-1/3 max-h-[80vh]"
-            start={400}
-            end={-100}
-          >
-            <Image
-              fill
-              sizes="(max-width: 768px) 100vw, 200px"
-              className="object-contain"
-              src="https://images.unsplash.com/photo-1677184915745-03e070e63a0c?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDEwfHx8ZW58MHx8fHx8"
-              alt="showcase"
-            />
-          </ParallaxItem>
-
-          <ParallaxItem
-            className="relative basis-1/3 max-h-[80vh]"
-            start={500}
-            end={-100}
-          >
-            <Image
-              fill
-              sizes="(max-width: 768px) 100vw, 200px"
-              className="object-contain"
-              src="https://images.unsplash.com/photo-1633194486274-8953df0d4064?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDF8fHxlbnwwfHx8fHw%3D"
-              alt="showcase"
-            />
-          </ParallaxItem>
-
-          <ParallaxItem
-            className="relative basis-1/3 max-h-[80vh]"
-            start={400}
-            end={-200}
-          >
-            <Image
-              fill
-              sizes="(max-width: 768px) 100vw, 200px"
-              className="object-contain"
-              src="https://images.unsplash.com/photo-1547658718-1cdaa0852790?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="showcase"
-            />
-          </ParallaxItem>
-        </PrallaxContainer>
-      </Parallax>
+      <div className="max-w-6xl mx-auto">
+        {SERVICES.map((service) => (
+          <ServiceRow key={service.label} service={service} />
+        ))}
+      </div>
     </section>
   );
 }

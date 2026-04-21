@@ -4,7 +4,7 @@ import {
   CardSticky,
 } from "@/components/systaliko-ui/cards-stack";
 import { Badge } from "@/components/ui/badge";
-import { Project, PROJECTS } from "@/data/constants";
+import { PROJECTS } from "@/data";
 import Image from "next/image";
 import {
   CustomCursor,
@@ -13,6 +13,7 @@ import {
 } from "../systaliko-ui/custom-cursor";
 import { motion } from "motion/react";
 import { SectionTitle } from "../section-title";
+import { ProjectT } from "@/types";
 
 function CustomCursorChildren({ children }: { children: React.ReactNode }) {
   return (
@@ -32,7 +33,7 @@ function CustomCursorChildren({ children }: { children: React.ReactNode }) {
   );
 }
 
-function ProjectCard(project: Project) {
+function ProjectCard(project: ProjectT) {
   const { setCursorChildren, containerRef } = useCustomCursor();
   const handleClearCursor = () => {
     setCursorChildren(null);
