@@ -14,7 +14,7 @@ function ServiceRow({ service }: { service: ServiceT }) {
           </Badge>
         ))}
       </div>
-      <div className="pointer-events-none absolute top-1/2 -translate-y-1/2 left-1/4 w-60 h-fit overflow-hidden transition-[clip-path] duration-500 ease-out [clip-path:polygon(50%_50%,50%_50%,50%_50%,50%_50%)] group-hover:[clip-path:polygon(0_0,100%_0,100%_100%,0%_100%)]">
+      <div className="pointer-events-none absolute top-1/2 -translate-y-1/2 left-1/4 w-60 h-fit overflow-hidden transition-[clip-path] delay-100 duration-400 ease-out [clip-path:polygon(50%_50%,50%_50%,50%_50%,50%_50%)] group-hover:[clip-path:polygon(0_0,100%_0,100%_100%,0%_100%)]">
         <Image
           className="flex-1 object-cover"
           src={service.serviceImage}

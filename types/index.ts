@@ -24,3 +24,10 @@ export interface ServiceT {
   solution: string;
   serviceImage: string;
 }
+
+export interface TestimonialT {
+  avatarUrl: string;
+  author: string;
+  jobTitle: string;
+  quote: string;
+}

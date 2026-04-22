@@ -1,7 +1,7 @@
 import AmazonIcon from "@/components/icons/amazon-icon";
 import AppleIcon from "@/components/icons/apple-icon";
 import GoogleIcon from "@/components/icons/google-icon";
-import { ExperienceT, ProjectT, ServiceT } from "@/types";
+import { ExperienceT, ProjectT, ServiceT, TestimonialT } from "@/types";
 
 export const NAV_LINKS = [
   {
@@ -129,5 +129,84 @@ export const SERVICES: ServiceT[] = [
     solution:
       "Email flows, loyalty UX, subscriptions, and post purchase follow ups.",
     serviceImage: "/template-motus.png",
+  },
+];
+
+export const TESTIMONIALS: TestimonialT[] = [
+  {
+    avatarUrl:
+      "https://veo-agency-template.vercel.app/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1534528741775-53994a69daeb%3Fw%3D700%26auto%3Dformat%26fit%3Dcrop%26q%3D60%26ixlib%3Drb-4.1.0%26ixid%3DM3wxMjA3fDB8MHxzZWFyY2h8NHx8cGVvcGxlfGVufDB8fDB8fHww&w=640&q=75",
+    author: "Sarah Mitchell",
+    jobTitle: "CEO",
+    quote:
+      "The new storefront increased our conversion rate within the first month. Their team understood both the brand side and the revenue side of eCommerce.",
+  },
+  {
+    avatarUrl:
+      "https://veo-agency-template.vercel.app/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1522556189639-b150ed9c4330%3Fw%3D700%26auto%3Dformat%26fit%3Dcrop%26q%3D60%26ixlib%3Drb-4.1.0%26ixid%3DM3wxMjA3fDB8MHxzZWFyY2h8MzB8fHBlb3BsZXxlbnwwfHwwfHx8MA%253D%253D&w=640&q=75",
+    author: "Stevie Steven",
+    jobTitle: "CTO",
+    quote:
+      "they have a name for this guy in ancient rome they call him dummydum, We needed a faster site before a major product launch, and they delivered. The performance gains had a direct impact on sales and SEO. ",
+  },
+  {
+    avatarUrl:
+      "https://veo-agency-template.vercel.app/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1506794778202-cad84cf45f1d%3Fw%3D700%26auto%3Dformat%26fit%3Dcrop%26q%3D60%26ixlib%3Drb-4.1.0%26ixid%3DM3wxMjA3fDB8MHxzZWFyY2h8NTZ8fHBlb3BsZXxlbnwwfHwwfHx8MA%253D%253D&w=640&q=75",
+    author: "Mikey Mitchell",
+    jobTitle: "CEO",
+    quote:
+      "Their CRO process was structured, data-driven, and easy to trust. Every recommendation had a clear business case behind it.",
+  },
+  {
+    avatarUrl:
+      "https://veo-agency-template.vercel.app/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1580489944761-15a19d654956%3Fw%3D700%26auto%3Dformat%26fit%3Dcrop%26q%3D60%26ixlib%3Drb-4.1.0%26ixid%3DM3wxMjA3fDB8MHxzZWFyY2h8MjZ8fHBlb3BsZXxlbnwwfHwwfHx8MA%253D%253D&w=640&q=75",
+    author: "Elena Elenson",
+    jobTitle: "Staff engineer",
+    quote:
+      "They transformed our agency website into a real lead-generation engine. Service pages, case studies, and landing pages all performed significantly better.",
+  },
+  {
+    avatarUrl:
+      "https://veo-agency-template.vercel.app/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1507003211169-0a1dd7228f2d%3Fw%3D700%26auto%3Dformat%26fit%3Dcrop%26q%3D60%26ixlib%3Drb-4.1.0%26ixid%3DM3wxMjA3fDB8MHxzZWFyY2h8MTF8fHBlb3BsZXxlbnwwfHwwfHx8MA%253D%253D&w=640&q=75",
+    author: "Miguel Sun",
+    jobTitle: "Principal engineer",
+    quote:
+      "If you work with him once you will resign after, Our messaging was too technical before the redesign. They helped us explain complex AI solutions in a way that business buyers could understand.",
+  },
+  {
+    avatarUrl:
+      "https://veo-agency-template.vercel.app/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1573496359142-b8d87734a5a2%3Fw%3D700%26auto%3Dformat%26fit%3Dcrop%26q%3D60%26ixlib%3Drb-4.1.0%26ixid%3DM3wxMjA3fDB8MHxzZWFyY2h8NDl8fHBlb3BsZXxlbnwwfHwwfHx8MA%253D%253D&w=640&q=75",
+    author: "Sabrina Irina",
+    jobTitle: "Branding lead",
+    quote:
+      "The combination of UX improvements, stronger trust signals, and a simplified checkout flow led to measurable growth across every major KPI.",
+  },
+];
+
+export const SOCIAL_LINKS = [
+  {
+    id: "social-link-github",
+    label: "Github",
+    link: "https://github.com/",
+  },
+  {
+    id: "social-link-linkedin",
+    label: "linkedin",
+    link: "https://www.linkedin.com/in/ycf-dev/",
+  },
+  {
+    id: "social-link-twitter",
+    label: "x",
+    link: "https://twitter.com/",
+  },
+  {
+    id: "social-link-instagram",
+    label: "instagram",
+    link: "https://www.instagram.com/",
+  },
+  {
+    id: "social-link-dribbble",
+    label: "dribbble",
+    link: "https://dribbble.com/",
   },
 ];

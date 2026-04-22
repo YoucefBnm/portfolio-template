@@ -1,83 +1,56 @@
 import { Logo } from "@/components/logo";
 import { MarqueeContainer } from "@/components/marquee-container";
+import { SOCIAL_LINKS } from "@/data";
 
-const SOCIAL_LINKS = [
-  {
-    id: "social-link-github",
-    label: "Github",
-    link: "https://github.com/",
-  },
-  {
-    id: "social-link-linkedin",
-    label: "linkedin",
-    link: "https://www.linkedin.com/in/ycf-dev/",
-  },
-  {
-    id: "social-link-twitter",
-    label: "x",
-    link: "https://twitter.com/",
-  },
-  {
-    id: "social-link-instagram",
-    label: "instagram",
-    link: "https://www.instagram.com/",
-  },
-  {
-    id: "social-link-dribbble",
-    label: "dribbble",
-    link: "https://dribbble.com/",
-  },
-];
+function Socials() {
+  return (
+    <ul className="list-none flex flex-wrap bg-primary py-px gap-px">
+      {SOCIAL_LINKS.map((social) => (
+        <li
+          key={social.id}
+          className="flex-1 hover:bg-popover hover:text-popover-foreground gap-2 bg-foreground  capitalize font-medium"
+        >
+          <a
+            href={social.link}
+            target="_blank"
+            className="p-4 flex justify-center items-center"
+          >
+            {social.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 export function Footer() {
   return (
-    <footer className="pt-16 pb-8">
-      <MarqueeContainer baseVelocity={2}>
-        <h1 className="mx-2 text-4xl text-muted-foreground md:text-5xl lg:text-6xl font-bold uppercase">
-          my small village and I thank you for your visit
+    <footer className="bg-foreground text-background">
+      <MarqueeContainer
+        baseVelocity={2}
+        className="relative z-2 items-center h-34 bg-foreground"
+      >
+        <h1 className="mx-2 text-3xl text-muted-foreground md:text-4xl lg:text-5xl font-medium tracking-wide uppercase">
+          my small village thank you for your visit{" "}
         </h1>
       </MarqueeContainer>
 
-      <div className="mt-6 text-center">
-        <a
-          href="mailto:mymail@mail.com"
-          className="w-fit rounded-full ring ring-ring/50 py-1.5 px-4 text-xl font-bold tracking-tight uppercase"
-        >
-          mymail@mail.com
-        </a>
+      <div className="sticky z-0 bottom-0 left-0 w-full h-fit">
+        <Socials />
       </div>
 
-      <nav className="flex items-center justify-between mt-16 pb-2 mx-8 border-b border-border">
-        <ul className="flex flex-wrap">
-          {SOCIAL_LINKS.map((socialLink) => (
-            <a
-              key={socialLink.id}
-              href={socialLink.link}
-              className="mx-2 text-sm font-bold tracking-tight uppercase"
-            >
-              {socialLink.label}
-            </a>
-          ))}
-        </ul>
-
-        <Logo />
-      </nav>
-
-      <div className="py-4 text-right px-8">
-        <p className="text-sm uppercase font-semibold text-muted-foreground">
-          © 2025 created by{" "}
+      <div className="flex p-6 justify-center items-center">
+        <small>
+          &copy; 2026 created by{" "}
           <a
-            className="text-foreground"
-            target="_blank"
             href="https://x.com/lbnm_yussef"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             Youcef Bnm
-          </a>{" "}
-          made with{" "}
-          <a target="_blank" href="https://systaliko-ui.vercel.app/">
-            systaliko ui
           </a>
-        </p>
+        </small>
+        .
       </div>
     </footer>
   );
