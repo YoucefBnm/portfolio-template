@@ -1,6 +1,6 @@
-'use client';
-import * as React from 'react';
-import { cn } from '@/lib/utils';
+"use client";
+import * as React from "react";
+import { cn } from "@/lib/utils";
 import {
   HTMLMotionProps,
   MapInputRange,
@@ -11,7 +11,7 @@ import {
   useScroll,
   useSpring,
   useTransform,
-} from 'motion/react';
+} from "motion/react";
 
 interface ScrollAnimationContextValue {
   scrollProgress: MotionValue<number>;
@@ -24,7 +24,7 @@ export function useScrollAnimationContext() {
   const context = React.useContext(ScrollAnimationContext);
   if (!context) {
     throw new Error(
-      'useScrollAnimationContext must be used within a ScrollAnimationContextProvider',
+      "useScrollAnimationContext must be used within a ScrollAnimationContextProvider",
     );
   }
   return context;
@@ -35,14 +35,14 @@ export function ScrollAnimation({
   className,
   children,
   ...props
-}: React.ComponentProps<'div'> & { spacerClass?: string }) {
+}: React.ComponentProps<"div"> & { spacerClass?: string }) {
   const scrollRef = React.useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: scrollRef,
   });
   const smoothProgress = useSpring(scrollYProgress, {
-    damping: 100,   
-    stiffness: 100, 
+    damping: 100,
+    stiffness: 100,
     restDelta: 0.001,
   });
   const reducedMotion = useReducedMotion();
@@ -50,9 +50,9 @@ export function ScrollAnimation({
 
   return (
     <ScrollAnimationContext.Provider value={{ scrollProgress }}>
-      <div ref={scrollRef} className={cn('relative', className)} {...props}>
+      <div ref={scrollRef} className={cn("relative", className)} {...props}>
         {children}
-        <div className={cn('w-full h-96', spacerClass)} />
+        <div className={cn("w-full h-96", spacerClass)} />
       </div>
     </ScrollAnimationContext.Provider>
   );
@@ -64,14 +64,14 @@ export function ScrollInsetX({
   className,
   style,
   ...props
-}: HTMLMotionProps<'div'> & { insetRange?: number[]; inputRange?: number[] }) {
+}: HTMLMotionProps<"div"> & { insetRange?: number[]; inputRange?: number[] }) {
   const { scrollProgress } = useScrollAnimationContext();
   const xInset = useTransform(scrollProgress, inputRange, insetRange);
   const clipPath = useMotionTemplate`inset(0px ${xInset}px)`;
   return (
     <motion.div
       className={className}
-      style={{ clipPath, willChange: 'clip-path', ...style }}
+      style={{ clipPath, willChange: "clip-path", ...style }}
       {...props}
     />
   );
@@ -82,14 +82,14 @@ export function ScrollInsetY({
   className,
   style,
   ...props
-}: HTMLMotionProps<'div'> & { insetRange?: number[]; inputRange?: number[] }) {
+}: HTMLMotionProps<"div"> & { insetRange?: number[]; inputRange?: number[] }) {
   const { scrollProgress } = useScrollAnimationContext();
   const yInset = useTransform(scrollProgress, inputRange, insetRange);
   const clipPath = useMotionTemplate`inset(${yInset}px 0px)`;
   return (
     <motion.div
       className={className}
-      style={{ clipPath, willChange: 'clip-path', ...style }}
+      style={{ clipPath, willChange: "clip-path", ...style }}
       {...props}
     />
   );
@@ -103,7 +103,7 @@ export function ScrollInset({
   className,
   style,
   ...props
-}: HTMLMotionProps<'div'> & {
+}: HTMLMotionProps<"div"> & {
   inputRange?: MapInputRange;
   insetRangeY?: unknown[];
   insetXRange?: unknown[];
@@ -122,7 +122,7 @@ export function ScrollInset({
   return (
     <motion.div
       className={className}
-      style={{ clipPath, willChange: 'clip-path', ...style }}
+      style={{ clipPath, willChange: "clip-path", ...style }}
       {...props}
     />
   );
@@ -134,13 +134,13 @@ export function ScrollTranslateY({
   style,
   className,
   ...props
-}: HTMLMotionProps<'div'> & { yRange?: unknown[]; inputRange?: number[] }) {
+}: HTMLMotionProps<"div"> & { yRange?: unknown[]; inputRange?: number[] }) {
   const { scrollProgress } = useScrollAnimationContext();
   const y = useTransform(scrollProgress, inputRange, yRange);
   return (
     <motion.div
-      style={{ y, willChange: 'transform', ...style }}
-      className={cn('relative origin-top', className)}
+      style={{ y, willChange: "transform", ...style }}
+      className={cn("relative origin-top", className)}
       {...props}
     />
   );
@@ -152,13 +152,13 @@ export function ScrollTranslateX({
   style,
   className,
   ...props
-}: HTMLMotionProps<'div'> & { xRange?: unknown[]; inputRange?: number[] }) {
+}: HTMLMotionProps<"div"> & { xRange?: unknown[]; inputRange?: number[] }) {
   const { scrollProgress } = useScrollAnimationContext();
   const x = useTransform(scrollProgress, inputRange, xRange);
   return (
     <motion.div
-      style={{ x, willChange: 'transform', ...style }}
-      className={cn('relative origin-top', className)}
+      style={{ x, willChange: "transform", ...style }}
+      className={cn("relative", className)}
       {...props}
     />
   );
@@ -170,13 +170,13 @@ export function ScrollScale({
   className,
   style,
   ...props
-}: HTMLMotionProps<'div'> & { scaleRange?: unknown[]; inputRange?: number[] }) {
+}: HTMLMotionProps<"div"> & { scaleRange?: unknown[]; inputRange?: number[] }) {
   const { scrollProgress } = useScrollAnimationContext();
   const scale = useTransform(scrollProgress, inputRange, scaleRange);
   return (
     <motion.div
       className={className}
-      style={{ scale, willChange: 'transform', ...style }}
+      style={{ scale, willChange: "transform", ...style }}
       {...props}
     />
   );
@@ -187,7 +187,7 @@ export function ScrollRadius({
   className,
   style,
   ...props
-}: HTMLMotionProps<'div'> & {
+}: HTMLMotionProps<"div"> & {
   radiusRange?: unknown[];
   inputRange?: number[];
 }) {
@@ -197,7 +197,7 @@ export function ScrollRadius({
     <motion.div
       layout
       className={className}
-      style={{ borderRadius, willChange: 'border-radius', ...style }}
+      style={{ borderRadius, willChange: "border-radius", ...style }}
       {...props}
     />
   );

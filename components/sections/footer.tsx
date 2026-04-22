@@ -30,7 +30,7 @@ export function Footer() {
         baseVelocity={2}
         className="relative z-2 items-center h-34 bg-foreground"
       >
-        <h1 className="mx-2 text-3xl text-muted-foreground md:text-4xl lg:text-5xl font-medium tracking-wide uppercase">
+        <h1 className="mx-2 text-3xl text-muted-foreground md:text-4xl lg:text-5xl font-semibold uppercase">
           my small village thank you for your visit{" "}
         </h1>
       </MarqueeContainer>

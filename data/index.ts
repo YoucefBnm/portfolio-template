@@ -140,6 +140,7 @@ export const TESTIMONIALS: TestimonialT[] = [
     jobTitle: "CEO",
     quote:
       "The new storefront increased our conversion rate within the first month. Their team understood both the brand side and the revenue side of eCommerce.",
+    colors: "bg-chart-1/80 text-background",
   },
   {
     avatarUrl:
@@ -148,6 +149,7 @@ export const TESTIMONIALS: TestimonialT[] = [
     jobTitle: "CTO",
     quote:
       "they have a name for this guy in ancient rome they call him dummydum, We needed a faster site before a major product launch, and they delivered. The performance gains had a direct impact on sales and SEO. ",
+    colors: "bg-chart-2/80 text-background",
   },
   {
     avatarUrl:
@@ -156,6 +158,7 @@ export const TESTIMONIALS: TestimonialT[] = [
     jobTitle: "CEO",
     quote:
       "Their CRO process was structured, data-driven, and easy to trust. Every recommendation had a clear business case behind it.",
+    colors: "bg-chart-3/80 text-background",
   },
   {
     avatarUrl:
@@ -164,6 +167,7 @@ export const TESTIMONIALS: TestimonialT[] = [
     jobTitle: "Staff engineer",
     quote:
       "They transformed our agency website into a real lead-generation engine. Service pages, case studies, and landing pages all performed significantly better.",
+    colors: "bg-chart-4/80 text-background",
   },
   {
     avatarUrl:
@@ -172,6 +176,7 @@ export const TESTIMONIALS: TestimonialT[] = [
     jobTitle: "Principal engineer",
     quote:
       "If you work with him once you will resign after, Our messaging was too technical before the redesign. They helped us explain complex AI solutions in a way that business buyers could understand.",
+    colors: "bg-chart-5/80 text-background",
   },
   {
     avatarUrl:
@@ -180,6 +185,7 @@ export const TESTIMONIALS: TestimonialT[] = [
     jobTitle: "Branding lead",
     quote:
       "The combination of UX improvements, stronger trust signals, and a simplified checkout flow led to measurable growth across every major KPI.",
+    colors: "bg-primary/80 text-primary-foreground",
   },
 ];
 

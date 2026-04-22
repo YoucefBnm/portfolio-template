@@ -1,3 +1,5 @@
+import { ClassValue } from "clsx";
+
 export interface ProjectT {
   id: string;
   year: number;
@@ -30,4 +32,5 @@ export interface TestimonialT {
   author: string;
   jobTitle: string;
   quote: string;
+  colors?: ClassValue;
 }

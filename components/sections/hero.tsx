@@ -17,6 +17,7 @@ function HeroText() {
       <TextStaggerInview
         staggerStart={"center"}
         animation="left"
+        staggerValue={0.04}
         className={clsx(
           "text-7xl font-bold tracking-tight uppercase",
           "*:data-[word='designer']:inline-flex *:data-[word='designer']:items-center",

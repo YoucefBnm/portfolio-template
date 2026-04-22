@@ -3,59 +3,92 @@ import { SectionTitle } from "../section-title";
 import { TestimonialT } from "@/types";
 import { Separator } from "../ui/separator";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { MarqueeContainer } from "../marquee-container";
+import {
+  ScrollAnimation,
+  ScrollTranslateX,
+  ScrollTranslateY,
+} from "../systaliko-ui/scroll-animation";
 
-function TestimonialCard({ testimonial }: { testimonial: TestimonialT }) {
+function TestimonialCard({
+  testimonial,
+  arrayLength,
+  index,
+}: {
+  testimonial: TestimonialT;
+  arrayLength: number;
+  index: number;
+}) {
+  const start = index / arrayLength;
+  const end = (index + 1) / arrayLength;
+
   return (
-    <div className="p-8 bg-background place-content-end">
-      <blockquote
-        className="text-muted-foreground text-balance"
-        cite="https://www.404.com"
+    <ScrollTranslateX xRange={[1000, 0]} inputRange={[start, end]}>
+      <div
+        className={`w-xs aspect-square p-8 border border-border/50 backdrop-blur-xl place-content-end ${testimonial.colors}`}
       >
-        <p>"{testimonial.quote}"</p>
-      </blockquote>
+        <blockquote
+          className=" font-medium text-balance"
+          cite="https://www.404.com"
+        >
+          <p>"{testimonial.quote}"</p>
+        </blockquote>
 
-      <Separator className="my-6 bg-border/50 " />
+        <Separator className="my-6 bg-border/50 " />
 
-      <div className="flex items-center gap-2">
-        <Avatar className="size-10">
-          <AvatarImage
-            src={testimonial.avatarUrl}
-            alt={`Portrait of ${testimonial.author}`}
-          />
-          <AvatarFallback>
-            {testimonial.author
-              .split(" ")
-              .map((n) => n[0])
-              .join("")}
-          </AvatarFallback>
-        </Avatar>
-        <div>
-          <h3 className="text-sm font-medium uppercase">
-            {testimonial.author}
-          </h3>
-          <p className="text-muted-foreground text-xs">
-            {testimonial.jobTitle}
-          </p>
+        <div className="flex items-center gap-2">
+          <Avatar className="size-10">
+            <AvatarImage
+              src={testimonial.avatarUrl}
+              alt={`Portrait of ${testimonial.author}`}
+            />
+            <AvatarFallback>
+              {testimonial.author
+                .split(" ")
+                .map((n) => n[0])
+                .join("")}
+            </AvatarFallback>
+          </Avatar>
+          <div>
+            <h3 className="text-sm font-medium uppercase">
+              {testimonial.author}
+            </h3>
+            <p className="text-xs">{testimonial.jobTitle}</p>
+          </div>
         </div>
       </div>
-    </div>
+    </ScrollTranslateX>
   );
 }
 
 export function Testimonials() {
   return (
-    <section className="pb-16 space-y-8">
-      <SectionTitle>Gossip</SectionTitle>
-      <div className="px-8">
-        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-px bg-border/50 border">
-          {TESTIMONIALS.map((testimonial) => (
-            <TestimonialCard
-              key={testimonial.author}
-              testimonial={testimonial}
-            />
-          ))}
-        </div>
-      </div>
+    <section>
+      <SectionTitle>Testimonials</SectionTitle>
+
+      <ScrollAnimation spacerClass="h-[700px]">
+        <ScrollTranslateY
+          yRange={[0, 700]}
+          className="h-screen overflow-hidden place-items-center grid grid-cols-1 grid-rows-1 *:col-start-1 *:row-start-1"
+        >
+          <MarqueeContainer baseVelocity={2}>
+            <h1 className="mx-2 text-3xl text-muted md:text-4xl lg:text-5xl font-semibold uppercase">
+              What they gossip about me{" "}
+            </h1>
+          </MarqueeContainer>
+
+          <div className="relative z-2 grid grid-cols-1 grid-rows-1 *:col-start-1 *:row-start-1 items-center *:odd:rotate-4 *:even:-rotate-4">
+            {TESTIMONIALS.map((testimonial, index) => (
+              <TestimonialCard
+                key={testimonial.author}
+                testimonial={testimonial}
+                arrayLength={TESTIMONIALS.length - 1}
+                index={index}
+              />
+            ))}
+          </div>
+        </ScrollTranslateY>
+      </ScrollAnimation>
     </section>
   );
 }
