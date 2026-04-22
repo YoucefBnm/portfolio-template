@@ -191,3 +191,16 @@
     @apply bg-background text-foreground;
   }
 }
+
+@theme {
+  @keyframes reveal {
+    from {
+      opacity: 0;
+      filter: blur(10px);
+    }
+    to {
+      opacity: 1;
+      filter: blur(0);
+    }
+  }
+}

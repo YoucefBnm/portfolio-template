@@ -8,6 +8,7 @@ import { Badge } from "../ui/badge";
 import { Pulse } from "../pulse";
 import { ClockIcon, MapPinIcon } from "lucide-react";
 import { ContainerStagger } from "../systaliko-ui/container-stagger";
+import clsx from "clsx";
 
 const opacityAnimation = ANIMATION_VARIANTS["default"];
 function HeroText() {
@@ -16,9 +17,20 @@ function HeroText() {
       <TextStaggerInview
         staggerStart={"center"}
         animation="left"
-        className="text-7xl font-bold tracking-tight uppercase"
+        className={clsx(
+          "text-7xl font-bold tracking-tight uppercase",
+          "*:data-[word='designer']:inline-flex *:data-[word='designer']:items-center",
+          "*:data-[word='designer']:after:block",
+          "*:data-[word='designer']:after:ml-4 *:data-[word='designer']:after:rounded-xl",
+          "*:data-[word='designer']:after:size-11",
+          "*:data-[word='designer']:after:bg-cover ",
+          "*:data-[word='designer']:after:bg-center",
+          "*:data-[word='designer']:after:bg-[url('https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=880&auto=format&fit=crop')]",
+          "*:data-[word='designer']:after:content-[''/'Profile_Picture']",
+          "*:data-[word='designer']:after:animate-[reveal_1s_ease-out_forwards]",
+        )}
       >
-        Designer & Developer
+        designer developer
       </TextStaggerInview>
 
       <motion.p
