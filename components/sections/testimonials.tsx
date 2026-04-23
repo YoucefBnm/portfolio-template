@@ -3,7 +3,6 @@ import { SectionTitle } from "../section-title";
 import { TestimonialT } from "@/types";
 import { Separator } from "../ui/separator";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { MarqueeContainer } from "../marquee-container";
 import {
   ScrollAnimation,
   ScrollTranslateX,
@@ -66,23 +65,20 @@ export function Testimonials() {
     <section>
       <SectionTitle>Testimonials</SectionTitle>
 
-      <ScrollAnimation spacerClass="h-[700px]">
+      <ScrollAnimation
+        offset={["center end", "end end"]}
+        spacerClass="h-[900px]"
+      >
         <ScrollTranslateY
-          yRange={[0, 700]}
+          yRange={[0, 900]}
           className="h-screen overflow-hidden place-items-center grid grid-cols-1 grid-rows-1 *:col-start-1 *:row-start-1"
         >
-          <MarqueeContainer baseVelocity={2}>
-            <h1 className="mx-2 text-3xl text-muted md:text-4xl lg:text-5xl font-semibold uppercase">
-              What they gossip about me{" "}
-            </h1>
-          </MarqueeContainer>
-
-          <div className="relative z-2 grid grid-cols-1 grid-rows-1 *:col-start-1 *:row-start-1 items-center *:odd:rotate-4 *:even:-rotate-4">
+          <div className="grid grid-cols-1 grid-rows-1 *:col-start-1 *:row-start-1 items-center *:odd:rotate-5 *:even:-rotate-5">
             {TESTIMONIALS.map((testimonial, index) => (
               <TestimonialCard
                 key={testimonial.author}
                 testimonial={testimonial}
-                arrayLength={TESTIMONIALS.length - 1}
+                arrayLength={TESTIMONIALS.length}
                 index={index}
               />
             ))}

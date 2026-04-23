@@ -6,10 +6,10 @@ import Image from "next/image";
 
 function ServiceRow({ service }: { service: ServiceT }) {
   return (
-    <div className="group cursor-pointer relative border-b hover:bg-popover hover:text-popover-foreground duration-200 ease-out transition-colors flex justify-between px-6 py-2.5 flex-wrap gap-4">
+    <div className="group cursor-pointer relative border-b hover:bg-popover hover:text-popover-foreground duration-200 ease-out transition-colors flex justify-between px-6 py-4 flex-wrap gap-4">
       <div className="flex-1 space-y-2 flex flex-col">
         {service.focus.map((focus) => (
-          <Badge variant={"outline"} className="rounded-full" key={focus}>
+          <Badge variant={"secondary"} className="rounded-full" key={focus}>
             {focus}
           </Badge>
         ))}

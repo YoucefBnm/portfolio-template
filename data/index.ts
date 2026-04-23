@@ -193,26 +193,26 @@ export const SOCIAL_LINKS = [
   {
     id: "social-link-github",
     label: "Github",
-    link: "https://github.com/",
+    href: "https://github.com/",
   },
   {
     id: "social-link-linkedin",
     label: "linkedin",
-    link: "https://www.linkedin.com/in/ycf-dev/",
+    href: "https://www.linkedin.com/in/ycf-dev/",
   },
   {
     id: "social-link-twitter",
     label: "x",
-    link: "https://twitter.com/",
+    href: "https://twitter.com/",
   },
   {
     id: "social-link-instagram",
     label: "instagram",
-    link: "https://www.instagram.com/",
+    href: "https://www.instagram.com/",
   },
   {
     id: "social-link-dribbble",
     label: "dribbble",
-    link: "https://dribbble.com/",
+    href: "https://dribbble.com/",
   },
 ];

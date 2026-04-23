@@ -6,7 +6,7 @@ export function SectionTitle({ children }: { children: React.ReactNode }) {
       <TextStaggerInview
         animation="left"
         staggerStart={"center"}
-        className="uppercase text-sm text-muted-foreground"
+        className="uppercase text-sm"
       >
         {children}
       </TextStaggerInview>

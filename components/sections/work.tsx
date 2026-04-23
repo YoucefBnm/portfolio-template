@@ -14,8 +14,9 @@ import {
 import { motion } from "motion/react";
 import { SectionTitle } from "../section-title";
 import { ProjectT } from "@/types";
+import { ArrowUpRightIcon } from "lucide-react";
 
-function CustomCursorChildren({ children }: { children: React.ReactNode }) {
+function CustomCursorButton() {
   return (
     <motion.div
       initial={{ opacity: 0, filter: "blur(10px)", scale: 0.8 }}
@@ -26,9 +27,9 @@ function CustomCursorChildren({ children }: { children: React.ReactNode }) {
       }}
       exit={{ opacity: 0, filter: "blur(10px)", scale: 0.8 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
-      className="w-min text-center p-2 aspect-square text-sm font-medium bg-primary text-primary-foreground rounded-full "
+      className="inline-flex gap-1 items-center text-center px-2 py-0.5 text-sm font-medium bg-primary/80 backdrop-blur-sm text-primary-foreground"
     >
-      {children}
+      case study <ArrowUpRightIcon className="size-3.5" />
     </motion.div>
   );
 }
@@ -47,13 +48,7 @@ function ProjectCard(project: ProjectT) {
       <CustomCursor />
       <div
         className="flex gap-8 flex-wrap"
-        onMouseEnter={() =>
-          setCursorChildren(
-            <CustomCursorChildren>
-              <span>view project</span>
-            </CustomCursorChildren>,
-          )
-        }
+        onMouseEnter={() => setCursorChildren(<CustomCursorButton />)}
         onMouseLeave={handleClearCursor}
       >
         <div className="md:flex-1 flex flex-col justify-evenly gap-4 p-6">

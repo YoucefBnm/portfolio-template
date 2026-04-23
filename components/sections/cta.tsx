@@ -1,9 +1,9 @@
-import { GridBento } from "@/components/systaliko-ui/blocks/grid-bento";
+import { GridBento } from "@/components/systaliko-ui/grid-bento";
 import {
   ScrollAnimation,
   ScrollScale,
   ScrollTranslateY,
-} from "@/components/systaliko-ui/blocks/scroll-animation";
+} from "@/components/systaliko-ui/scroll-animation";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 

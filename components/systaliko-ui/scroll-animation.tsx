@@ -9,6 +9,7 @@ import {
   useMotionTemplate,
   useReducedMotion,
   useScroll,
+  UseScrollOptions,
   useSpring,
   useTransform,
 } from "motion/react";
@@ -29,20 +30,25 @@ export function useScrollAnimationContext() {
   }
   return context;
 }
-
+interface ScrollAnimationProps extends React.ComponentPropsWithRef<"div"> {
+  spacerClass?: string;
+  offset?: UseScrollOptions["offset"];
+}
 export function ScrollAnimation({
   spacerClass,
+  offset,
   className,
   children,
   ...props
-}: React.ComponentProps<"div"> & { spacerClass?: string }) {
+}: ScrollAnimationProps) {
   const scrollRef = React.useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: scrollRef,
+    offset: offset,
   });
   const smoothProgress = useSpring(scrollYProgress, {
-    damping: 100,
-    stiffness: 100,
+    damping: 30,
+    stiffness: 400,
     restDelta: 0.001,
   });
   const reducedMotion = useReducedMotion();
@@ -158,12 +164,29 @@ export function ScrollTranslateX({
   return (
     <motion.div
       style={{ x, willChange: "transform", ...style }}
-      className={cn("relative", className)}
+      className={cn("relative origin-top", className)}
       {...props}
     />
   );
 }
-
+export function ScrollOpacity({
+  opacityRange = [0, 1],
+  inputRange = [0, 1],
+  style,
+  ...props
+}: HTMLMotionProps<"div"> & {
+  opacityRange?: unknown[];
+  inputRange?: number[];
+}) {
+  const { scrollProgress } = useScrollAnimationContext();
+  const opacity = useTransform(scrollProgress, inputRange, opacityRange);
+  return (
+    <motion.div
+      style={{ opacity, willChange: "opacity", ...style }}
+      {...props}
+    />
+  );
+}
 export function ScrollScale({
   scaleRange = [1.2, 1],
   inputRange = [0, 1],

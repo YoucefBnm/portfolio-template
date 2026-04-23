@@ -78,7 +78,7 @@
   --primary-foreground: oklch(0.226 0.0074 48.3767);
   --secondary: oklch(0.3412 0.0079 43.1947);
   --secondary-foreground: oklch(0.9017 0.007 247.9024);
-  --muted: oklch(0.2303 0.0073 48.3848);
+  --muted: #433831;
   --muted-foreground: oklch(0.7422 0.0161 241.8514);
   --accent: oklch(0.3984 0.0076 43.2266);
   --accent-foreground: oklch(0.9017 0.007 247.9024);
@@ -100,9 +100,9 @@
   --sidebar-accent-foreground: oklch(0.9017 0.007 247.9024);
   --sidebar-border: oklch(0.3412 0.0079 43.1947);
   --sidebar-ring: oklch(0.7511 0.1172 268.43);
-  --font-sans: Plus Jakarta Sans, sans-serif;
-  --font-serif: Lora, serif;
-  --font-mono: Roboto Mono, monospace;
+  --font-sans: Inter, ui-sans-serif, sans-serif, system-ui;
+  --font-serif: "Lora", Georgia, serif;
+  --font-mono: "Fira Code", "Courier New", monospace;
   --radius: 0rem;
   --shadow-x: 2px;
   --shadow-y: 2px;
