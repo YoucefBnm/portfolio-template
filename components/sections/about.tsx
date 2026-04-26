@@ -1,4 +1,4 @@
-import { TextStaggerInview } from "@/components/systaliko-ui/text/text-stagger-inview";
+import { TextStaggerInview } from "@/components/systaliko-ui/text-stagger-inview";
 import { ANIMATION_VARIANTS } from "@/components/systaliko-ui/utils/animation-variants";
 import { Button } from "@/components/ui/button";
 import { ArrowRightIcon } from "lucide-react";
@@ -13,7 +13,6 @@ export function About() {
           staggerValue={0.005}
           animation="left"
           className="text-2xl items-center font-semibold text-balance"
-          as="h3"
         >
           They call me d&d that’s not my rap name one D for developer and other
           for designer, and in the dark nights when you miss the moon I&apos;m

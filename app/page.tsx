@@ -1,20 +1,18 @@
-import { About } from "@/sections/about";
-import { Cta } from "@/sections/cta";
-import { Experience } from "@/sections/experience";
-import { Hero } from "@/sections/hero";
-import { Services } from "@/sections/services";
-import { Work } from "@/sections/work";
+import { Experience } from "@/components/sections/experience";
+import { Hero } from "@/components/sections/hero";
+import { Services } from "@/components/sections/services";
+import { Testimonials } from "@/components/sections/testimonials";
+import { Work } from "@/components/sections/work";
 import ReactLenis from "lenis/react";
 
 export default function Home() {
   return (
     <ReactLenis root>
       <Hero />
-      <About />
-      <Services />
       <Work />
       <Experience />
-      <Cta />
+      <Services />
+      <Testimonials />
     </ReactLenis>
   );
 }

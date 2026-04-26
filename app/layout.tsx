@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Header } from "@/sections/header";
-import { Footer } from "@/sections/footer";
+import { Footer } from "@/components/sections/footer";
 import { ThemeProvider } from "next-themes";
+import { Nav } from "@/components/nav";
 
 const fontSans = Inter({
   variable: "--font-sans",
@@ -36,7 +36,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
+          <Nav />
           {children}
           <Footer />
         </ThemeProvider>
